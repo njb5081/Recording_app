@@ -7,25 +7,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" Height="44" Width="131">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="0,1,0,0" Height="44" VerticalAlignment="Top">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="-150,-60,-36,0" Height="94" VerticalAlignment="Top">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="77*"/>
             <ColumnDefinition Width="54*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock x:Name="RecordingText" HorizontalAlignment="Left" Margin="42,10,-3,0" TextWrapping="Wrap" Text="Start Recording" FontSize="12" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="24" Width="92"/>
-        <Button x:Name="recordButton" HorizontalAlignment="Left" Margin="5,4,0,0" VerticalAlignment="Top" Height="32" Width="32" Click="recordButton_Click" Style="{StaticResource CircleButton}"/>
-
-        <!--<TextBox Text="test">
-            <TextBox.Resources>
-                <Storyboard x:Name="test_1">
-                    <ColorAnimation Storyboard.TargetName="mySolidColorBrush"
-                                    Storyboard.TargetProperty="Color"
-                                    From="Red" To="White" Duration="0:0:4"/>
-                </Storyboard>
-            </TextBox.Resources>
-            <TextBox.Background>
-                <SolidColorBrush x:Name="mySolidColorBrush" Color="Red" />
-            </TextBox.Background>
-        </TextBox>-->
+        <Button x:Name="recordButton" HorizontalAlignment="Left" Margin="79,6,0,0" Content="Start Recording" FontSize="29" VerticalAlignment="Top" Height="78" Width="228" Click="recordButton_Click" Grid.ColumnSpan="2"/>
+        <Ellipse x:Name="recordIndicator" Fill="Black" HorizontalAlignment="Left" Height="64" Stroke="Black" StrokeThickness="2" Margin="2,16,0,0" VerticalAlignment="Top" Width="74"/>
+        
     </Grid>
 </Page>

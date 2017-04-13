@@ -4,8 +4,10 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -23,7 +25,7 @@ namespace Recording_app
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private bool recordingStatus;
+        private bool recordingStatus = false;
         public MainPage()
         {
             this.InitializeComponent();
@@ -32,30 +34,56 @@ namespace Recording_app
         
         private void recordButton_Click(object sender, RoutedEventArgs e)
         {
+            toggleRecording();
             Debug.WriteLine("Button Clicked!");
-            if ((string) RecordingText.Text == "Start Recording")
+            Debug.WriteLine((string)recordButton.Content == "Start Recording");
+            SolidColorBrush fill = new SolidColorBrush();
+            if ((string) recordButton.Content == "Start Recording")
             {
-                RecordingText.Text = "Stop Recording";
+                recordButton.Content = "Stop Recording";
+                Debug.WriteLine("In while");
+ 
+                fill.Color = Colors.Red;
+                recordIndicator.Fill = fill;
+             
             }
             else
             {
-                RecordingText.Text = "Start Recording";
+                recordButton.Content = "Start Recording";
+                fill.Color = Colors.Black;
+                recordIndicator.Fill = fill;
+
             }
-            toggleRecording();
         }
 
+        private void waitNmilliSeconds(int milliSec)
+        {
+            if (milliSec < 1)
+            {
+                return;
+            }
+            DateTime desired = DateTime.Now.AddMilliseconds(milliSec);
+            while (DateTime.Now < desired)
+            {
+                Debug.WriteLine("spinning");
+            }
+        }
+       
 
-        private bool toggleRecording()
+
+        private void toggleRecording()
         {
             if (recordingStatus == false)
             {
+                Debug.WriteLine("here");
                 recordingStatus = true;
-                return true;
+            //    return true;
             }
             else
             {
+                Debug.WriteLine("erere");
                 recordingStatus = false;
-                return false;
+              //  return false;
             }
         }
     }
